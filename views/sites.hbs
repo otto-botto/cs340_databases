@@ -1,0 +1,35 @@
+<!-- sites.hbs -->
+<h1>Campground Sites</h1>
+<p>Displaying, Searching, Updating, and Deleting Sites</p>
+
+<table>
+    {{!-- -- Header Section -- --}}
+
+    <thead>
+        {{!-- First row only, print each key of the row object as a header cell --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+
+            {{!-- -- Add a delete column -- --}}
+            {{!-- <th>delete</th> --}}
+        </tr>
+    </thead>
+
+    {{!-- -- Body Section -- --}}
+    <tbody>
+
+        {{#each data}}
+            <td>{{this.SiteId}}</td>
+            <td>{{this.GroundSiteId}}</td>
+            <td>{{this.SiteNumber}}</td>
+            
+            {{!-- -- add a delete button that references the function in delete_campgroun.js -- --}}
+            {{!-- <td><button onclick="deleteCampground({{this.CampgroundId}})">Delete</button></td> --}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

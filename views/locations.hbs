@@ -1,0 +1,38 @@
+<!-- locations.hbs -->
+<h1>Locations</h1>
+<p>Displaying, Searching, Updating, and Deleting Locations</p>
+
+<table>
+    {{!-- -- Header Section -- --}}
+
+    <thead>
+        {{!-- First row only, print each key of the row object as a header cell --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+
+            {{!-- -- Add a delete column -- --}}
+            {{!-- <th>delete</th> --}}
+        </tr>
+    </thead>
+
+    {{!-- -- Body Section -- --}}
+    <tbody>
+
+        {{#each data}}
+            <td>{{this.LocationId}}</td>
+            <td>{{this.State}}</td>
+            <td>{{this.ClosestTown}}</td>
+            <td>{{this.DistanceToTown}}</td>
+            <td>{{this.Longitude}}</td>
+            <td>{{this.Latitude}}</td>
+            
+            {{!-- -- add a delete button that references the function in delete_campgroun.js -- --}}
+            {{!-- <td><button onclick="deleteCampground({{this.CampgroundId}})">Delete</button></td> --}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,105 @@
+<!-- index.hbs -->
+<h1>Campgrounds</h1>
+<p>Displaying, Searching, Updating, and Deleting Campgrounds</p>
+
+<table id="campgrounds-table">
+    {{!-- -- Header Section -- --}}
+
+    <thead>
+        {{!-- First row only, print each key of the row object as a header cell --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+
+            {{!-- -- Add a delete column -- --}}
+            <th>delete</th>
+        </tr>
+    </thead>
+
+    {{!-- -- Body Section -- --}}
+    <tbody>
+
+        {{#each data}}
+        <tr data-value={{this.CampgroundId}}>
+            <td>{{this.CampgroundId}}</td>
+            <td>{{this.CampgroundName}}</td>
+            <td>{{this.CampgroundPhone}}</td>
+            <td>{{this.CampLocationId}}</td>
+            <td>{{this.NumberOfSites}}</td>
+            {{!-- -- add a delete button that references the function in delete_campgroun.js -- --}}
+            <td><button onclick="deleteCampground({{this.CampgroundId}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_campground.js"></script>
+
+
+
+{{!-- Form to search a campground by name  --}}
+
+<h2>Search Using an HTML Form</h2>
+<p>Search by Campground name using the field below. Partial names are OK too!</p>
+
+{{!-- using the root route 'action='/' --}}
+<form id="search-campground-html" method='GET' action='/'> 
+    <label for="input-CampgroundName">Search by Campground Name: </label>
+    <input type="text" name="CampgroundName" id="input-CampgroundName-html-search">
+    
+    <input type="submit">
+    <a href='/'><button>Reset</button></a>
+</form>
+
+{{!-- Form to add a record to the table  --}}
+<h2>Adding Data with AJAX</h2>
+<p>To add a campground, please enter the information below and click 'Submit'!</p>
+<form id="add-campground-form-ajax">
+    
+    <label for="input-CampgroundName">Campground Name: </label>
+    <input type="text" name="input-CampgroundName" id="input-CampgroundName">
+    
+    <label for="input-CampgroundPhone">Campground Phone: </label>
+    <input type="text" name="input-CampgroundPhone" id="input-CampgroundPhone">
+
+    <label for="input-CampLocationId">Campground LocationID (1,2, or 3): </label>
+    <input type="number" name="input-CampLocationId" id="input-CampLocationId">
+
+
+    <label for="input-numSites">Number of Sites: </label>
+    <input type="number" name="input-numSites" id="input-numSites">
+
+    <input type="submit">
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_campground.js"></script>
+
+
+{{!-- Form to update a record to the table  --}}
+<h2>Updating A Campground's Location Form</h2>
+<p>To update a specific campground's location select the campground's name from the drop-down menu on the left and the correct location id from the drop down menu on the right</p>
+<form id="update-campground-form-ajax">
+
+    <label for="input-CampgroundName">Campground Name: </label>
+    <select name="input-CampgroundName" id="mySelect">
+        <option value="test">Select a Campground</option>
+        {{#each data}}
+        <option value="{{this.CampgroundId}}">{{this.CampgroundName}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-CampLocationId">CampLocationId: </label>
+    <select name="input-CampLocationId" id="input-CampLocationId-update">
+        <option>Select Closest Town</option>
+        {{#each locations}}
+        <option value="{{this.LocationId}}">{{this.ClosestTown}}</option>
+        {{/each}}
+    </select>
+    <input type="submit">
+
+</form>
+
+<script src="./js/update_campground.js"></script>

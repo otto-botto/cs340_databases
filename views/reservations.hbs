@@ -1,0 +1,38 @@
+<!-- reservations.hbs -->
+<h1>Customers</h1>
+<p>Displaying, Searching, Updating, and Deleting Customers</p>
+
+<table>
+    {{!-- -- Header Section -- --}}
+
+    <thead>
+        {{!-- First row only, print each key of the row object as a header cell --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+
+            {{!-- -- Add a delete column -- --}}
+            {{!-- <th>delete</th> --}}
+        </tr>
+    </thead>
+
+    {{!-- -- Body Section -- --}}
+    <tbody>
+
+        {{#each data}}
+            <td>{{this.ReservationId}}</td>
+            <td>{{this.SiteReservationId}}</td>
+            <td>{{this.CustReservationId}}</td>
+            <td>{{this.ReservationTimestamp}}</td>
+            <td>{{this.ReservationStart}}</td>
+            <td>{{this.ReservationEnd}}</td>
+            
+            {{!-- -- add a delete button that references the function in delete_campgroun.js -- --}}
+            {{!-- <td><button onclick="deleteCampground({{this.CampgroundId}})">Delete</button></td> --}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
