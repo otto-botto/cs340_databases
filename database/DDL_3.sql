@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS Campgrounds;
 CREATE TABLE Campgrounds (
     CampgroundId INT NOT NULL AUTO_INCREMENT,
     CampgroundName VARCHAR(255),
-    CampgroundPhone VARCHAR(64),
+    CampgroundPhone VARCHAR(12),
     NumberOfSites SMALLINT(6) NOT NULL,
     State TINYTEXT,
     ClosestTown VARCHAR(64),
@@ -91,17 +91,17 @@ VALUES
     ('Anastasia', 'Vinogradova', 'anyakoshka@email.com', '2025230163');
 
 
-INSERT INTO Campgrounds (CampgroundName, CampgroundPhone, NumberOfSites,
-                         State, ClosestTown, DistanceToTown, Longitude, Latitude)
-VALUES ('Fox Creek', '2027841511', 2,'WA', 'Ardenvoir', 14.60, -120.511, 47.925);
+INSERT INTO Campgrounds (CampgroundName, CampgroundPhone, NumberOfSites, 
+    State, ClosestTown, DistanceToTown, Longitude, Latitude)
+VALUES ('Fox Creek', "502.784.1511", 16, 'WA', 'Ardenvoir', 14.60, -120.511, 47.925);
 
-INSERT INTO Campgrounds (CampgroundName, CampgroundPhone, NumberOfSites,
-                         State, ClosestTown, DistanceToTown, Longitude, Latitude)
-VALUES ('Sugarloaf', '2024862186', 2, 'WA', 'Pomeroy', 19.40, -117.672, 46.198);
+INSERT INTO Campgrounds (CampgroundName, CampgroundPhone, NumberOfSites, 
+    State, ClosestTown, DistanceToTown, Longitude, Latitude)
+VALUES ('Lynx Pass', "970.638.4516", 11, 'CO', 'Toponas', 5.9, -106.699, 40.078);
 
-INSERT INTO Campgrounds (CampgroundName, CampgroundPhone, NumberOfSites,
-                         State, ClosestTown, DistanceToTown, Longitude, Latitude)
-VALUES ('Ladybug', '2028431891', 3, 'WA', 'Okanogan', 16.9, -119.697, 48.594);
+INSERT INTO Campgrounds (CampgroundName, CampgroundPhone, NumberOfSites, 
+    State, ClosestTown, DistanceToTown, Longitude, Latitude)
+VALUES ('Hobo Gulch', "530.623.2121", 10, 'CA', 'Junction City', 14.5, -123.153, 40.929);
 
 INSERT INTO CampgroundSites (GroundSiteId, SiteNumber)
 VALUES ((SELECT CampgroundId FROM Campgrounds WHERE CampgroundId=1), 1);
